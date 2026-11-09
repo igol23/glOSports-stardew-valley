@@ -26,6 +26,14 @@ for f in LICENSE.GL4ES.txt LICENSE.Mono.txt LICENSE.MonoGame.txt LICENSE.Patch.t
   need "$PORT/$f"
 done
 need "$ROOT/THIRD_PARTY_NOTICES.md"
+if [ -d "$PORT/mono/share/doc" ]; then
+  find "$PORT/mono/share/doc" -type f -name copyright -print -quit | grep -q . || \
+    fail "Debian Mono package copyright metadata is missing"
+else
+  fail "Debian Mono package copyright metadata directory is missing"
+fi
+grep -q 'Copyright (c) 2011-2020, Yann Collet' "$PORT/LICENSE_lz4.txt" || \
+  fail "LZ4 notice does not match v1.10.0 lib/LICENSE"
 OPENAL_SRC="$ROOT/THIRD_PARTY_SOURCE/openal-soft-1.25.2-source.tar.gz"
 need "$OPENAL_SRC"
 if [ -f "$OPENAL_SRC" ]; then
