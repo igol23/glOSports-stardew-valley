@@ -54,4 +54,5 @@ echo "SHA-256:  $ZIP.sha256"
 echo
 echo "This archive contains the ARMHF runtime and a 'Stardew Runtime Test' Puppy entry."
 echo "It deliberately does NOT contain Stardew Valley game files."
-echo "Install into the HOME partition, then launch 'Stardew Runtime Test' first."
+echo "The runtime test checks MonoGame/GL4ES/gamepad startup; it does not validate audio."
+echo "Install into the HOME partition and launch 'Stardew Runtime Test' first."
