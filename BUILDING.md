@@ -38,10 +38,10 @@ The build output is under `dev/out/stardew/` and is ignored by Git. It is not a 
 Do not rebuild the runtime just to make a transport ZIP. Insert the device's SD card into a card reader so its HOME partition appears as a Windows drive, then run:
 
 ```sh
-git clone https://github.com/igol23/glOSports-stardew-valley.git ~/stardew-device-test && cd ~/stardew-device-test && bash scripts/package-working-wsl.sh
+if [ -d "$HOME/stardew-device-test/.git" ]; then git -C "$HOME/stardew-device-test" pull --ff-only; else git clone https://github.com/igol23/glOSports-stardew-valley.git "$HOME/stardew-device-test"; fi && cd "$HOME/stardew-device-test" && bash scripts/package-working-wsl.sh
 ```
 
-The script locates `ports/stardewvalley/` on the mounted SD card, copies the installed runtime without modifying the card, removes game data, the generated icon, saves, logs, and local overrides from the ZIP, adds the pinned notices, and places the ZIP and SHA-256 file on the Windows Desktop. No Docker build or recompilation is performed.
+The script locates `ports/stardewvalley/` on the mounted SD card, streams the installed runtime without modifying the card, excludes game data, the generated icon, saves, logs, and local overrides before they enter the ZIP or WSL staging area, adds the pinned notices, and places the ZIP and SHA-256 file on the Windows Desktop. No Docker build or recompilation is performed.
 
 The ZIP is intended to update the **same HOME partition** from which the working port was copied. Extract it into the HOME root and merge folders; do not format the card or delete the existing `ports/stardewvalley/gamedata/` directory. The archive does not contain game files, so the existing local game data stays on that HOME partition.
 
