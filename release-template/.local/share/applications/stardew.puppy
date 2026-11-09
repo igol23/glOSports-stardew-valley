@@ -8,6 +8,6 @@ ICON=/home/player/ports/stardewvalley/icon.png
 [ENTRY]
 CATEGORY=Games
 NAME=Stardew Runtime Test
-DESCRIPTION=Test MonoGame, GL4ES and audio without game files
+DESCRIPTION=Test MonoGame, GL4ES and gamepad without game files
 COMMAND=sh /home/player/ports/stardewvalley/stardew.sh test
 ICON=/home/player/ports/stardewvalley/icon.png
