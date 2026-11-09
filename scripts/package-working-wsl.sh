@@ -8,7 +8,7 @@ cd "$ROOT"
 
 fail() { echo "ERROR: $*" >&2; exit 1; }
 
-for cmd in zip unzip sha256sum powershell.exe wslpath; do
+for cmd in zip unzip sha256sum tar powershell.exe wslpath; do
   command -v "$cmd" >/dev/null 2>&1 || fail "missing command: $cmd"
 done
 
@@ -68,13 +68,16 @@ PORT="$STAGE/ports/stardewvalley"
 
 echo "Working copy: $SOURCE"
 echo "Copying the existing runtime; no compilation will be performed."
-cp -a "$SOURCE" "$PORT"
+mkdir -p "$PORT"
+# Exclude private game files and local state while reading from the SD card, rather than
+# copying them into WSL temporarily and deleting them afterwards.
+tar -C "$SOURCE" \
+  --exclude=./gamedata --exclude=./Saves --exclude=./logs \
+  --exclude=./icon.png --exclude=./.language --exclude=./env \
+  -cf - . | tar -C "$PORT" -xf -
 
-# Keep the user's game, generated icon, saves, and local settings on their original HOME.
-# They are not copied into this transport ZIP. Extracting the archive over that same HOME
-# merges the runtime update and leaves the existing gamedata directory in place.
-rm -rf "$PORT/gamedata" "$PORT/Saves" "$PORT/logs"
-rm -f "$PORT/icon.png" "$PORT/.language" "$PORT/env"
+# The archive omits this directory. Extracting over the same HOME merges files and leaves
+# the pre-existing local gamedata untouched.
 mkdir -p "$PORT/gamedata"
 cp "$ROOT/release-template/ports/stardewvalley/gamedata/README-OWN-GAME-FILES.txt" "$PORT/gamedata/"
 
