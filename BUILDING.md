@@ -32,3 +32,25 @@ The build output is under `dev/out/stardew/` and is ignored by Git. It is not a 
 - `build.sh game` copies proprietary files from the path supplied in `SDV_GAME`; all output from this command must remain local.
 - `build.sh xmlgen` creates serializers specific to the game assemblies. Treat those outputs as game-derived and keep them out of the public repository and release archive unless their redistribution status has been explicitly cleared.
 - A build succeeding on the PC does not prove runtime compatibility on the handheld.
+
+## One-command WSL device-test package
+
+If the existing `goodluck-dev` Docker image is already present in WSL, a game-free ARMHF test package can be built and copied to the Windows Desktop with:
+
+```sh
+bash scripts/build-wsl-desktop.sh
+```
+
+For a clean checkout in a dedicated folder (without touching another local working tree), run:
+
+```sh
+git clone https://github.com/igol23/glOSports-stardew-valley.git ~/stardew-device-test && cd ~/stardew-device-test && bash scripts/build-wsl-desktop.sh
+```
+
+The script builds the runtime through the existing Docker-based build, creates `Stardew-goodluckOS-device-test.zip`, verifies the ZIP and SHA-256, and copies both files to the Windows Desktop. It requires Docker Engine, the existing `goodluck-dev` base image, WSL Windows interop (`powershell.exe`), and the usual `zip`/`unzip` tools. It does not add or redistribute Stardew Valley game files.
+
+The HOME package includes two Puppy entries:
+- **Stardew Runtime Test** runs `HelloMG.exe` to check MonoGame/GL4ES startup and gamepad input without game files. It does not validate audio.
+- **Stardew Valley** requires the user's own Compatibility game files under `HOME/ports/stardewvalley/gamedata/`.
+
+This is a device-test package, not a public release and not proof that the full game works on the target handheld. Test it on a spare HOME copy or SD card first; do not overwrite the known-working installation.
