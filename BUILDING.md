@@ -11,7 +11,7 @@ The build workflow is based on the pinned `dev/stardew/build.sh` from alvesmaico
 
 ## Source import
 
-The source import script and its exact behavior are documented in the repository's release history. The imported GoodLuckOS source is pinned to commit `b7a3ca2d1de2077557760e05655cb555ea35b98d`. Do not rerun an import over an existing, locally edited source directory.
+For a fresh checkout only, run `bash scripts/import-upstream.sh`. It imports the pinned GoodLuckOS source and refuses to overwrite an existing `dev/stardew/` directory. The imported GoodLuckOS source is pinned to commit `b7a3ca2d1de2077557760e05655cb555ea35b98d`. This repository already contains that import; do not rerun it over the existing source directory.
 
 ## Build
 
@@ -19,9 +19,9 @@ Set `SDV_GAME` to the directory containing your own compatible game files. The u
 
 ```sh
 export SDV_GAME="/path/to/your/Stardew Valley game folder"
-dev/stardew/build.sh          # ARMHF port runtime + project helpers
-dev/stardew/build.sh game     # prepares your own gamedata; never commit this output
-dev/stardew/build.sh xmlgen   # builds save serializers from your own game files
+bash dev/stardew/build.sh          # ARMHF port runtime + project helpers
+bash dev/stardew/build.sh game     # prepares your own gamedata; never commit this output
+bash dev/stardew/build.sh xmlgen   # builds save serializers from your own game files
 ```
 
 The build output is under `dev/out/stardew/` and is ignored by Git. It is not a public game-data directory. The OpenAL Soft `COPYING` notice must be copied into the generated port. When assembling a release from an already-built working runtime, the release helper must obtain the same notice from the hash-pinned OpenAL Soft 1.25.2 source archive.
