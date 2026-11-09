@@ -8,8 +8,10 @@ A release is published only after every blocking item below is resolved. The cur
 - [ ] Compare the maintainer's working package against the pinned source; document actual local changes instead of guessing.
 - [ ] Confirm the exact Stardew Compatibility game version and source layout used by the working package.
 - [ ] Verify redistribution terms and notices for every runtime binary and helper executable.
+- [ ] Ensure all pinned notices from `LICENSES/` are present beside the runtime, including Mono `PATENTS.TXT`.
 - [ ] Ensure `LICENSE.OpenAL.txt` is present and matches OpenAL Soft 1.25.2 `COPYING`.
-- [ ] Preserve all existing Mono, MonoGame, GL4ES, Patch, LWJGL, and LZ4 notices.
+- [ ] Preserve Debian copyright metadata under `mono/share/doc/` for the extracted Mono packages.
+- [ ] Confirm the LZ4 notice matches v1.10.0 `lib/LICENSE`, not the older PortMaster notice.
 - [ ] Confirm no game files, game-generated icon, saves, logs, device configuration, or personal overrides are in the release staging directory.
 
 ## Build and device verification
