@@ -9,8 +9,8 @@ This file distinguishes the origin of the work from the maintainer's own packagi
 | PortMaster Stardew files | [`PortsMaster/PortMaster-New`](https://github.com/PortsMaster/PortMaster-New), commit `49b642ae4a3699bfa3626933ed70e7b34efd14e2` | The upstream GoodLuckOS build script downloads a pinned selection of Stardew support files from this revision. |
 | GL4ES | [`ptitSeb/gl4es`](https://github.com/ptitSeb/gl4es), revision `ec16bedd8819c475326f4f1a3063772c6d986e06` | OpenGL compatibility layer used by the port. |
 | OpenAL Soft | [`kcat/openal-soft`](https://github.com/kcat/openal-soft), tag `1.25.2` (source tarball SHA-256 `fb27e5839aa11f0e5b9d33756965291fad5d6909ab928ea1f796f4a1a6877894`) | Audio library. Its `COPYING` file must accompany a distributed shared library. |
-| LZ4 | [`lz4/lz4`](https://github.com/lz4/lz4), tag `v1.10.0` | Compression library used by the port's LZ4 shim and asset handling. |
-| Mono | Debian package version `6.12.0.199+dfsg-6` | ARMHF Mono runtime selected by the upstream build script. Preserve package notices. |
+| LZ4 | [`lz4/lz4`](https://github.com/lz4/lz4), tag `v1.10.0`, [`lib/LICENSE`](https://github.com/lz4/lz4/blob/v1.10.0/lib/LICENSE) | The build compiles `lib/lz4.c`, which is covered by the BSD 2-Clause license. The repository-wide `LICENSE` explains that non-`lib/` files use GPL-2.0-or-later unless otherwise stated. |
+| Mono | Debian package version `6.12.0.199+dfsg-6`; upstream patent promise from [`mono/mono`](https://github.com/mono/mono/tree/mono-6.12.0.199) | ARMHF Mono runtime selected by the upstream build script. Preserve Debian package copyright metadata and the upstream `PATENTS.TXT` referenced by Mono's license notice. |
 
 ## Attribution notes
 
