@@ -33,24 +33,16 @@ The build output is under `dev/out/stardew/` and is ignored by Git. It is not a 
 - `build.sh xmlgen` creates serializers specific to the game assemblies. Treat those outputs as game-derived and keep them out of the public repository and release archive unless their redistribution status has been explicitly cleared.
 - A build succeeding on the PC does not prove runtime compatibility on the handheld.
 
-## One-command WSL device-test package
+## Package the existing working device installation from WSL
 
-If the existing `goodluck-dev` Docker image is already present in WSL, a game-free ARMHF test package can be built and copied to the Windows Desktop with:
-
-```sh
-bash scripts/build-wsl-desktop.sh
-```
-
-For a clean checkout in a dedicated folder (without touching another local working tree), run:
+Do not rebuild the runtime just to make a transport ZIP. Insert the device's SD card into a card reader so its HOME partition appears as a Windows drive, then run:
 
 ```sh
-git clone https://github.com/igol23/glOSports-stardew-valley.git ~/stardew-device-test && cd ~/stardew-device-test && bash scripts/build-wsl-desktop.sh
+git clone https://github.com/igol23/glOSports-stardew-valley.git ~/stardew-device-test && cd ~/stardew-device-test && bash scripts/package-working-wsl.sh
 ```
 
-The script builds the runtime through the existing Docker-based build, creates `Stardew-goodluckOS-device-test.zip`, verifies the ZIP and SHA-256, and copies both files to the Windows Desktop. It requires Docker Engine, the existing `goodluck-dev` base image, WSL Windows interop (`powershell.exe`), and the usual `zip`/`unzip` tools. It does not add or redistribute Stardew Valley game files.
+The script locates `ports/stardewvalley/` on the mounted SD card, copies the installed runtime without modifying the card, removes game data, the generated icon, saves, logs, and local overrides from the ZIP, adds the pinned notices, and places the ZIP and SHA-256 file on the Windows Desktop. No Docker build or recompilation is performed.
 
-The HOME package includes two Puppy entries:
-- **Stardew Runtime Test** runs `HelloMG.exe` to check MonoGame/GL4ES startup and gamepad input without game files. It does not validate audio.
-- **Stardew Valley** requires the user's own Compatibility game files under `HOME/ports/stardewvalley/gamedata/`.
+The ZIP is intended to update the **same HOME partition** from which the working port was copied. Extract it into the HOME root and merge folders; do not format the card or delete the existing `ports/stardewvalley/gamedata/` directory. The archive does not contain game files, so the existing local game data stays on that HOME partition.
 
-This is a device-test package, not a public release and not proof that the full game works on the target handheld. Test it on a spare HOME copy or SD card first; do not overwrite the known-working installation.
+This is a private device-test archive, not a public release. It does not establish that all binary redistribution checks are complete. Do not publish it as a GitHub Release.
