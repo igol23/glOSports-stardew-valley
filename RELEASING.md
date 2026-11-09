@@ -1,0 +1,60 @@
+# Release checklist
+
+A release is published only after every blocking item below is resolved. The currently working handheld installation is the reference; it must not be modified during repository preparation.
+
+## Before packaging
+
+- [ ] Import and pin the GoodLuckOS source; record its exact commit.
+- [ ] Compare the maintainer's working package against the pinned source; document actual local changes instead of guessing.
+- [ ] Confirm the exact Stardew Compatibility game version and source layout used by the working package.
+- [ ] Verify redistribution terms and notices for every runtime binary and helper executable.
+- [ ] Ensure `LICENSE.OpenAL.txt` is present and matches OpenAL Soft 1.25.2 `COPYING`.
+- [ ] Preserve all existing Mono, MonoGame, GL4ES, Patch, LWJGL, and LZ4 notices.
+- [ ] Confirm no game files, game-generated icon, saves, logs, device configuration, or personal overrides are in the release staging directory.
+
+## Build and device verification
+
+- [ ] Build the distributable port folder from the pinned sources, or explicitly document that the tested release was assembled from the existing working runtime.
+- [ ] Run the release audit script against the staged HOME tree.
+- [ ] Install to a clean HOME copy or spare card, without overwriting the maintainer's working installation.
+- [ ] Confirm the Puppy entry appears and launches the game after the user supplies their own files.
+- [ ] Confirm audio, controls, language handling, saving, and loading.
+- [ ] Record the device model, firmware version, game build, date, and tested functions in the release notes.
+
+## Build a Release ZIP from the already-working package
+
+After source and license review, the existing installed package can be used as release input. The packaging script must copy into a temporary staging directory and must never edit the supplied working directory.
+
+```sh
+bash scripts/make-release.sh \
+  "/path/to/working/ports/stardewvalley" \
+  "dist/stardewvalley-goodluckOS.zip"
+```
+
+The script should remove `gamedata/`, generated `icon.png`, local `env`, language state, port-local saves and logs, then add the HOME menu entry and required notices. It must run `scripts/audit-release.sh` before creating the ZIP.
+
+## Publish
+
+- [ ] Commit complete relevant corresponding sources and license texts.
+- [ ] Build a HOME-layout ZIP with no proprietary game data.
+- [ ] Run `sha256sum` and publish the checksum beside the ZIP.
+- [ ] Create a GitHub Release and clearly state that the latest tested version is on the Releases page.
+
+## Expected release archive layout
+
+```text
+.local/share/applications/stardew.puppy
+ports/stardewvalley/
+  stardew.sh
+  mono/
+  dlls/
+  gl4es/
+  lib/
+  gamedata/README-OWN-GAME-FILES.txt
+  LICENSE.*.txt
+  LICENSE.OpenAL.txt
+THIRD_PARTY_NOTICES.md
+THIRD_PARTY_SOURCE/openal-soft-1.25.2-source.tar.gz
+```
+
+The exact runtime file list is determined by the built port and its license review. This checklist is not permission to redistribute a binary whose terms have not been verified.
