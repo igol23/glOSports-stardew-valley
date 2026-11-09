@@ -30,10 +30,10 @@ cp "$ROOT/INSTALL-TR.md" "$STAGE/INSTALL-TR.md"
 
 # Add the exact OpenAL notice from the hash-pinned source.
 if [ ! -f "$PORT/LICENSE.OpenAL.txt" ] || [ ! -f "$STAGE/THIRD_PARTY_SOURCE/openal-soft-1.25.2-source.tar.gz" ]; then
-  "$ROOT/scripts/fetch-openal-license.sh" "$PORT" "$STAGE/THIRD_PARTY_SOURCE" "$ROOT/LICENSES"
+  bash "$ROOT/scripts/fetch-openal-license.sh" "$PORT" "$STAGE/THIRD_PARTY_SOURCE" "$ROOT/LICENSES"
 fi
 
-"$ROOT/scripts/audit-release.sh" "$STAGE"
+bash "$ROOT/scripts/audit-release.sh" "$STAGE"
 
 mkdir -p "$(dirname "$OUT")"
 rm -f "$OUT" "$OUT.sha256"
