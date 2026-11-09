@@ -1,0 +1,6 @@
+[ENTRY]
+CATEGORY=Games
+NAME=Stardew Valley
+DESCRIPTION=Farming, Friendship and Country Life
+COMMAND=sh /home/player/ports/stardewvalley/stardew.sh
+ICON=/home/player/ports/stardewvalley/icon.png
