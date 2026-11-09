@@ -36,7 +36,7 @@ for notice in LICENSE.GL4ES.txt LICENSE.Mono.txt LICENSE.MonoGame.txt LICENSE.Pa
 done
 
 # Include the exact OpenAL source archive and verify that its COPYING matches.
-bash "$ROOT/scripts/fetch-openal-license.sh" "$PORT" "$STAGE/THIRD_PARTY_SOURCE" "$ROOT/LICENSES"
+bash "$ROOT/scripts/fetch-openal-license.sh" "$PORT" "$STAGE/THIRD_PARTY_SOURCE"
 
 bash "$ROOT/scripts/audit-release.sh" "$STAGE"
 
