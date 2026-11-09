@@ -29,7 +29,7 @@ SDV_GAME=${SDV_GAME:-$HOME/Library/Application Support/Steam/steamapps/common/St
 if [ ! -f /.dockerenv ]; then
     docker image inspect $IMAGE >/dev/null 2>&1 || docker build -t $IMAGE "$HERE"
     game=(); [ -d "$SDV_GAME" ] && game=(-v "$SDV_GAME:/game:ro")
-    exec docker run --rm -i -e AOT_PROFILE="${AOT_PROFILE:-}" -v "$REPO:/repo" -v goodluck-work:/work "${game[@]}" $IMAGE /repo/dev/stardew/build.sh "$@"
+    exec docker run --rm -i -e AOT_PROFILE="${AOT_PROFILE:-}" -e JOBS="${JOBS:-2}" -v "$REPO:/repo" -v goodluck-work:/work "${game[@]}" $IMAGE /repo/dev/stardew/build.sh "$@"
 fi
 
 W=/work/stardew
@@ -88,7 +88,7 @@ build_gl4es() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_C_FLAGS="$ARMFLAGS -Wno-error=return-mismatch -Wno-error=int-conversion -Wno-error=incompatible-pointer-types" \
         -DNOX11=ON -DGLX_STUBS=OFF -DEGL_WRAPPER=ON -DGBM=ON > "$BLD/gl4es.cmake.log"
-    ninja -C "$BLD/gl4es" > "$BLD/gl4es.log"
+    ninja -j "${JOBS:-2}" -C "$BLD/gl4es" > "$BLD/gl4es.log"
     cp -L "$SRC/gl4es/lib/libGL.so.1" "$SRC/gl4es/lib/libEGL.so.1" "$P/gl4es/"
 }
 
@@ -101,7 +101,7 @@ build_openal() {
         -DALSOFT_BACKEND_PIPEWIRE=OFF -DALSOFT_BACKEND_PULSEAUDIO=OFF -DALSOFT_BACKEND_JACK=OFF \
         -DALSOFT_BACKEND_OSS=OFF -DALSOFT_BACKEND_SNDIO=OFF -DALSOFT_BACKEND_PORTAUDIO=OFF \
         -DALSOFT_BACKEND_SDL2=OFF -DALSOFT_BACKEND_SDL3=OFF > "$BLD/openal.cmake.log"
-    ninja -C "$BLD/openal" > "$BLD/openal.log"
+    ninja -j "${JOBS:-2}" -C "$BLD/openal" > "$BLD/openal.log"
     cp -L "$BLD/openal/libopenal.so.1" "$P/lib/"
     cp "$SRC/openal-soft/COPYING" "$P/LICENSE.OpenAL.txt"
 }
