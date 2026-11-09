@@ -3,7 +3,7 @@
 # This deliberately does not rebuild, replace, or modify the source installation.
 set -Eeuo pipefail
 
-ROOT=$(cd "$(dirname "\${BASH_SOURCE[0]}")/.." && pwd)
+ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$ROOT"
 
 fail() { echo "ERROR: $*" >&2; exit 1; }
@@ -18,7 +18,7 @@ fi
 
 SOURCE=""
 if [ "$#" -eq 1 ]; then
-  SOURCE=\${1%/}
+  SOURCE=${1%/}
   [ -f "$SOURCE/stardew.sh" ] || fail "stardew.sh not found in: $SOURCE"
 else
   CANDIDATES=()
@@ -28,18 +28,18 @@ else
       [ -f "$candidate/stardew.sh" ] && CANDIDATES+=("$candidate")
     done
   done
-  if [ "\${#CANDIDATES[@]}" -gt 0 ]; then
-    mapfile -t CANDIDATES < <(printf '%s\n' "\${CANDIDATES[@]}" | sort -u)
+  if [ "${#CANDIDATES[@]}" -gt 0 ]; then
+    mapfile -t CANDIDATES < <(printf '%s\n' "${CANDIDATES[@]}" | sort -u)
   fi
-  case "\${#CANDIDATES[@]}" in
+  case "${#CANDIDATES[@]}" in
     0)
       fail "No working Stardew port found. Insert the device SD card in a card reader and make its HOME partition appear as a Windows drive, then run this command again. Or pass the exact port folder as an argument."
       ;;
-    1) SOURCE=\${CANDIDATES[0]} ;;
+    1) SOURCE=${CANDIDATES[0]} ;;
     *)
       echo "More than one Stardew installation was found:"
-      select choice in "\${CANDIDATES[@]}"; do
-        [ -n "\${choice:-}" ] || { echo "Choose a number."; continue; }
+      select choice in "${CANDIDATES[@]}"; do
+        [ -n "${choice:-}" ] || { echo "Choose a number."; continue; }
         SOURCE=$choice
         break
       done
@@ -95,7 +95,7 @@ for required in \
   "$PORT/gl4es/libGL.so.1" "$PORT/gl4es/libEGL.so.1" \
   "$PORT/lib/libopenal.so.1" "$PORT/lib/liblwjgl_lz4.so" \
   "$PORT/gamedata/README-OWN-GAME-FILES.txt"; do
-  [ -e "$required" ] || fail "staged package missing: \${required#$STAGE/}"
+  [ -e "$required" ] || fail "staged package missing: ${required#$STAGE/}"
 done
 [ ! -e "$PORT/icon.png" ] || fail "game-generated icon was not removed"
 [ ! -d "$PORT/Saves" ] || fail "port-local Saves directory was not removed"
