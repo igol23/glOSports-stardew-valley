@@ -1,0 +1,32 @@
+# Build outputs and downloaded work trees
+/dev/out/
+/dev/stardew/src/
+/dev/stardew/build/
+/dist/
+*.log
+*.tmp
+*.zip
+*.sha256
+
+# Private game files and game-derived outputs
+**/gamedata/**
+!release-template/ports/stardewvalley/gamedata/
+!release-template/ports/stardewvalley/gamedata/README-OWN-GAME-FILES.txt
+**/Content/
+**/*.xnb
+**/*.xwb
+**/StardewValley.exe
+**/Stardew Valley.exe
+**/StardewValley.GameData.dll
+**/StardewValley.XmlSerializers*.dll
+**/StardewValley.XmlSerializers*.txt
+**/Saves/
+**/*.sav
+**/SaveGameInfo
+
+# Local runtime overrides and user state
+env
+.language
+**/.language
+**/startup_preferences
+**/logs/
