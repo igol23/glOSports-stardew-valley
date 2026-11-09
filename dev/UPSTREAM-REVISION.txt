@@ -1,0 +1,5 @@
+Repository: alvesmaicon/goodluckOS
+Commit: b7a3ca2d1de2077557760e05655cb555ea35b98d
+PortMaster revision used by build.sh: 49b642ae4a3699bfa3626933ed70e7b34efd14e2
+Imported source: dev/stardew/ and dev/README.md (renamed dev/README-upstream.md)
+Local packaging adjustments: standalone Dockerfile; OpenAL Soft COPYING notice retrieval from hash-pinned source.
