@@ -48,7 +48,7 @@ else
 fi
 
 SOURCE=$(cd "$SOURCE" && pwd)
-[ -x "$SOURCE/mono/bin/mono" ] || fail "Mono runtime missing: $SOURCE/mono/bin/mono"
+[ -f "$SOURCE/mono/bin/mono" ] || fail "Mono runtime missing: $SOURCE/mono/bin/mono"
 [ -f "$SOURCE/stardew.sh" ] || fail "launcher missing"
 [ -f "$SOURCE/dlls/MonoGame.Framework.dll" ] || fail "MonoGame runtime missing"
 [ -f "$SOURCE/gl4es/libGL.so.1" ] || fail "GL4ES libGL missing"
