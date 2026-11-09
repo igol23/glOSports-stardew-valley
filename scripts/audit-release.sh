@@ -21,7 +21,8 @@ need "$PORT/gl4es/libEGL.so.1"
 need "$PORT/lib/libopenal.so.1"
 need "$PORT/lib/liblwjgl_lz4.so"
 
-for f in LICENSE.GL4ES.txt LICENSE.Mono.txt LICENSE.MonoGame.txt LICENSE.Patch.txt LICENSE_lwjgl.txt LICENSE_lz4.txt LICENSE.OpenAL.txt; do
+for f in LICENSE.GL4ES.txt LICENSE.Mono.txt LICENSE.MonoGame.txt LICENSE.Patch.txt \
+         LICENSE_lwjgl.txt LICENSE_lz4.txt LICENSE.OpenAL.txt PATENTS.TXT; do
   need "$PORT/$f"
 done
 need "$ROOT/THIRD_PARTY_NOTICES.md"
