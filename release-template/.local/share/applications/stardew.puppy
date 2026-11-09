@@ -1,6 +1,13 @@
 [ENTRY]
 CATEGORY=Games
 NAME=Stardew Valley
-DESCRIPTION=Farming, Friendship and Country Life
+DESCRIPTION=Your own game files, compatibility branch
 COMMAND=sh /home/player/ports/stardewvalley/stardew.sh
+ICON=/home/player/ports/stardewvalley/icon.png
+
+[ENTRY]
+CATEGORY=Games
+NAME=Stardew Runtime Test
+DESCRIPTION=Test MonoGame, GL4ES and audio without game files
+COMMAND=sh /home/player/ports/stardewvalley/stardew.sh test
 ICON=/home/player/ports/stardewvalley/icon.png
