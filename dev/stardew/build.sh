@@ -103,6 +103,7 @@ build_openal() {
         -DALSOFT_BACKEND_SDL2=OFF -DALSOFT_BACKEND_SDL3=OFF > "$BLD/openal.cmake.log"
     ninja -C "$BLD/openal" > "$BLD/openal.log"
     cp -L "$BLD/openal/libopenal.so.1" "$P/lib/"
+    cp "$SRC/openal-soft/COPYING" "$P/LICENSE.OpenAL.txt"
 }
 
 build_lz4() {
@@ -127,6 +128,14 @@ build_mono() {
     cp -a "$r"/usr/lib/libmono-native.so* "$r/usr/lib/libMonoPosixHelper.so" "$m/lib/"
     cp -a "$r/usr/lib/mono" "$m/lib/"
     cp -a "$r/etc/mono" "$m/etc/"
+    # Preserve Debian's package copyright metadata for the exact Mono runtime packages.
+    if [ -d "$r/usr/share/doc" ]; then
+        while IFS= read -r -d '' f; do
+            rel=${f#"$r/usr/share/doc/"}
+            mkdir -p "$m/share/doc/$(dirname "$rel")"
+            cp "$f" "$m/share/doc/$rel"
+        done < <(find "$r/usr/share/doc" -type f -name copyright -print0)
+    fi
     arm-linux-gnueabihf-gcc $ARMFLAGS -shared -fPIC -Wl,-soname,libgssapi_krb5.so.2 \
         -Wl,--version-script=<(echo 'gssapi_krb5_2_MIT { global: *; };') "$HERE/gssstub.c" -o "$m/lib/libgssapi_krb5.so.2"
     cp -rL "$m" "$P/mono"
@@ -230,6 +239,11 @@ build() {
     mkdir -p "$P/lib" "$P/gl4es" "$P/dlls" "$P/test" "$P/gamedata"
     toolchain
     echo "== PortMaster files";  fetch_portmaster
+    # Replace stale upstream notice copies with the notices pinned in this repository.
+    for f in LICENSE.GL4ES.txt LICENSE.Mono.txt LICENSE.MonoGame.txt LICENSE.Patch.txt \
+             LICENSE_lwjgl.txt LICENSE_lz4.txt PATENTS.TXT; do
+        cp "/repo/LICENSES/$f" "$P/$f"
+    done
     echo "== Mono $MONO";        build_mono
     echo "== gl4es $GL4ES_REV";  build_gl4es
     echo "== OpenAL Soft $OPENAL"; build_openal
