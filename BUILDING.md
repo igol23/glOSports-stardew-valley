@@ -24,7 +24,7 @@ bash dev/stardew/build.sh game     # prepares your own gamedata; never commit th
 bash dev/stardew/build.sh xmlgen   # builds save serializers from your own game files
 ```
 
-The build output is under `dev/out/stardew/` and is ignored by Git. It is not a public game-data directory. The OpenAL Soft `COPYING` notice must be copied into the generated port. When assembling a release from an already-built working runtime, the release helper must obtain the same notice from the hash-pinned OpenAL Soft 1.25.2 source archive.
+The build output is under `dev/out/stardew/` and is ignored by Git. It is not a public game-data directory. The build copies the OpenAL Soft `COPYING` notice from the already hash-verified source tree. It also places Debian package `copyright` metadata for the extracted Mono packages under `mono/share/doc/`. The pinned third-party notices in `LICENSES/` are copied beside the generated runtime. When assembling a release from an already-built working runtime, the release helper copies those notices and independently verifies OpenAL against the hash-pinned 1.25.2 source archive.
 
 ## Important distinctions
 
