@@ -69,17 +69,16 @@ PORT="$STAGE/ports/stardewvalley"
 echo "Working copy: $SOURCE"
 echo "Copying the existing runtime; no compilation will be performed."
 mkdir -p "$PORT"
-# Exclude private game files and local state while reading from the SD card, rather than
-# copying them into WSL temporarily and deleting them afterwards.
 tar -C "$SOURCE" \
   --exclude=./gamedata --exclude=./Saves --exclude=./logs \
   --exclude=./icon.png --exclude=./.language --exclude=./env \
   -cf - . | tar -C "$PORT" -xf -
 
-# The archive omits this directory. Extracting over the same HOME merges files and leaves
-# the pre-existing local gamedata untouched.
 mkdir -p "$PORT/gamedata"
 cp "$ROOT/release-template/ports/stardewvalley/gamedata/README-OWN-GAME-FILES.txt" "$PORT/gamedata/"
+mkdir -p "$STAGE/.local/share/applications"
+cp "$ROOT/release-template/.local/share/applications/stardew.puppy" \
+   "$STAGE/.local/share/applications/stardew.puppy"
 
 for notice in LICENSE.GL4ES.txt LICENSE.Mono.txt LICENSE.MonoGame.txt LICENSE.Patch.txt \
               LICENSE_lwjgl.txt LICENSE_lz4.txt LICENSE.OpenAL.txt PATENTS.TXT; do
@@ -90,14 +89,12 @@ cp "$ROOT/LICENSE" "$STAGE/"
 cp "$ROOT/README.md" "$STAGE/PROJECT-README.md"
 cp "$ROOT/INSTALL-TR.md" "$STAGE/"
 
-cp "$ROOT/release-template/apps.puppy.append" \
-   "$STAGE/apps.puppy.append"
-
 for required in \
   "$PORT/mono/bin/mono" "$PORT/dlls/MonoGame.Framework.dll" \
   "$PORT/gl4es/libGL.so.1" "$PORT/gl4es/libEGL.so.1" \
   "$PORT/lib/libopenal.so.1" "$PORT/lib/liblwjgl_lz4.so" \
-  "$PORT/gamedata/README-OWN-GAME-FILES.txt"; do
+  "$PORT/gamedata/README-OWN-GAME-FILES.txt" \
+  "$STAGE/.local/share/applications/stardew.puppy"; do
   [ -e "$required" ] || fail "staged package missing: ${required#$STAGE/}"
 done
 [ ! -e "$PORT/icon.png" ] || fail "game-generated icon was not removed"
@@ -127,5 +124,5 @@ echo "SHA-256: $ZIP.sha256"
 echo
 echo "This ZIP was made from the existing working runtime; it was NOT rebuilt."
 echo "It excludes gamedata, icon, saves, logs, and local overrides."
-echo "Append apps.puppy.append to the existing HOME/apps.puppy; do not replace apps.puppy."
+echo "It includes .local/share/applications/stardew.puppy, matching the working Puppy menu layout."
 echo "Do NOT format the card or delete the existing HOME/ports/stardewvalley/gamedata folder."
