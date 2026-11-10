@@ -17,7 +17,7 @@ The existing working installation is the reference build. Repository preparation
 - Keep the ARMHF runtime and launcher separate from the user's proprietary Stardew Valley game files.
 - Preserve third-party license texts and verify notices against the components actually shipped.
 - Produce a HOME-layout ZIP and SHA-256 checksum only after release checks pass.
-- Document the device, firmware, game build, and functions actually tested.
+- Document the device, firmware, and functions actually tested; identify the target game as Stardew Valley **1.6.15.24356 from Steam's Compatibility branch (32-bit/XNA)**.
 
 ## Repository layout
 
@@ -68,7 +68,7 @@ Commit reviewed source and documentation. Create a versioned GitHub Release with
 ## Release blockers
 
 - The working package has been compared against pinned upstream sources sufficiently to support accurate attribution.
-- The exact Stardew Valley Compatibility build used for testing is recorded.
+- The target Stardew Valley build is documented as Steam Compatibility **1.6.15.24356** (32-bit/XNA), and the clean-install test confirms the supplied files match that build.
 - Redistribution terms and corresponding-source requirements for every shipped binary are reviewed.
 - All required third-party notices are present and match shipped components.
 - The release audit passes and the archive contains no game assets, saves, logs, or local-only settings.
