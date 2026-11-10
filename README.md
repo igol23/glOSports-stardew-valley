@@ -28,6 +28,49 @@ This repository documents and packages a Stardew Valley setup that the maintaine
 
 Performance figures are intentionally omitted until they are measured on the exact published build and recorded with reproducible conditions.
 
+## Screenshots
+
+A quick look at the port running on the GA36 handheld — from the goodluckOS Games menu to everyday Stardew Valley gameplay.
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="docs/images/glosstardew1.jpeg" alt="Stardew Valley listed in the goodluckOS main menu" width="420">
+      <br><strong>1 · goodluckOS Menu</strong>
+      <br><sub>Stardew Valley listed in the handheld's Games menu.</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="docs/images/glosstardew2.jpeg" alt="Stardew Valley in-game title menu" width="420">
+      <br><strong>2 · Title Screen</strong>
+      <br><sub>The game's main menu.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="docs/images/glosstardew3.jpeg" alt="Stardew Valley save and load screen" width="420">
+      <br><strong>3 · Save Selection</strong>
+      <br><sub>Save / Load screen for choosing a save.</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="docs/images/glosstardew4.jpeg" alt="Stardew Valley gameplay on a rainy day" width="420">
+      <br><strong>4 · Rainy Day</strong>
+      <br><sub>In-game scene during rainy weather.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="docs/images/glosstardew5.jpeg" alt="Stardew Valley gameplay on a sunny day" width="420">
+      <br><strong>5 · Sunny Day</strong>
+      <br><sub>In-game scene in clear weather.</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="docs/images/glosstardew6.jpeg" alt="Stardew Valley conversation with an NPC" width="420">
+      <br><strong>6 · NPC Dialogue</strong>
+      <br><sub>A conversation with a villager.</sub>
+    </td>
+  </tr>
+</table>
+
 ## What it uses
 
 The GoodLuckOS implementation combines a 32-bit ARMHF Mono runtime, PortMaster's MonoGame-based Stardew support, GL4ES for OpenGL ES, OpenAL Soft for audio, an LZ4 compatibility shim, and loader/patch tools. The launcher also synchronizes the game's language with the goodluckOS Puppy language setting.
