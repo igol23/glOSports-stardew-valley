@@ -6,7 +6,7 @@ A release is published only after every blocking item below is resolved. The cur
 
 - [ ] Import and pin the GoodLuckOS source; record its exact commit.
 - [ ] Compare the maintainer's working package against the pinned source; document actual local changes instead of guessing.
-- [ ] Confirm the exact Stardew Compatibility game version and source layout used by the working package.
+- [ ] Record and verify the Stardew Valley **1.6.15.24356 Steam Compatibility build (32-bit/XNA)** and the source layout used by the working package.
 - [ ] Verify redistribution terms and notices for every runtime binary and helper executable.
 - [ ] Ensure all pinned notices from `LICENSES/` are present beside the runtime, including Mono `PATENTS.TXT`.
 - [ ] Ensure `LICENSE.OpenAL.txt` is present and matches OpenAL Soft 1.25.2 `COPYING`.
@@ -21,7 +21,7 @@ A release is published only after every blocking item below is resolved. The cur
 - [ ] Install to a clean HOME copy or spare card, without overwriting the maintainer's working installation.
 - [ ] Confirm the Puppy entry appears and launches the game after the user supplies their own files.
 - [ ] Confirm audio, controls, language handling, saving, and loading.
-- [ ] Record the device model, firmware version, game build, date, and tested functions in the release notes.
+- [ ] Record the device model, firmware version, Stardew Valley **1.6.15.24356 (Steam Compatibility, 32-bit/XNA)** build, date, and tested functions in the release notes.
 
 ## Build a Release ZIP from the already-working package
 
