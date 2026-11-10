@@ -63,7 +63,7 @@ mkdir -p "$DESKTOP"
 
 STAGE=$(mktemp -d)
 trap 'rm -rf "$STAGE"' EXIT
-mkdir -p "$STAGE/ports" "$STAGE/.local/share/applications"
+mkdir -p "$STAGE/ports"
 PORT="$STAGE/ports/stardewvalley"
 
 echo "Working copy: $SOURCE"
@@ -90,8 +90,8 @@ cp "$ROOT/LICENSE" "$STAGE/"
 cp "$ROOT/README.md" "$STAGE/PROJECT-README.md"
 cp "$ROOT/INSTALL-TR.md" "$STAGE/"
 
-cp "$ROOT/release-template/.local/share/applications/stardew.puppy" \
-   "$STAGE/.local/share/applications/stardew.puppy"
+cp "$ROOT/release-template/apps.puppy.append" \
+   "$STAGE/apps.puppy.append"
 
 for required in \
   "$PORT/mono/bin/mono" "$PORT/dlls/MonoGame.Framework.dll" \
@@ -127,5 +127,5 @@ echo "SHA-256: $ZIP.sha256"
 echo
 echo "This ZIP was made from the existing working runtime; it was NOT rebuilt."
 echo "It excludes gamedata, icon, saves, logs, and local overrides."
-echo "To test on the same SD card, extract into its HOME root and MERGE folders."
+echo "Append apps.puppy.append to the existing HOME/apps.puppy; do not replace apps.puppy."
 echo "Do NOT format the card or delete the existing HOME/ports/stardewvalley/gamedata folder."
