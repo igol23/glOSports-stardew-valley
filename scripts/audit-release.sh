@@ -12,7 +12,7 @@ ERRORS=0
 fail() { echo "BLOCK: $*" >&2; ERRORS=$((ERRORS + 1)); }
 need() { [ -e "$1" ] || fail "missing required file: ${1#$ROOT/}"; }
 
-need "$ROOT/.local/share/applications/stardew.puppy"
+need "$ROOT/apps.puppy.append"
 need "$PORT/stardew.sh"
 need "$PORT/mono/bin/mono"
 need "$PORT/dlls/MonoGame.Framework.dll"
