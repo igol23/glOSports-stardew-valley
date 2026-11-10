@@ -19,7 +19,7 @@ A release is published only after every blocking item below is resolved. The cur
 - [ ] Build the distributable port folder from the pinned sources, or explicitly document that the tested release was assembled from the existing working runtime.
 - [ ] Run the release audit script against the staged HOME tree.
 - [ ] Install to a clean HOME copy or spare card, without overwriting the maintainer's working installation.
-- [ ] Confirm the Puppy entry appears and launches the game after the user supplies their own files.
+- [ ] Confirm the package contains apps.puppy.append; append it to the existing HOME/apps.puppy during clean-install testing, then confirm the entry launches the game after the user supplies their own files.
 - [ ] Confirm audio, controls, language handling, saving, and loading.
 - [ ] Record the device model, firmware version, Stardew Valley **1.6.15.24356 (Steam Compatibility, 32-bit/XNA)** build, date, and tested functions in the release notes.
 
@@ -33,7 +33,7 @@ bash scripts/make-release.sh \
   "dist/stardewvalley-goodluckOS.zip"
 ```
 
-The script should remove `gamedata/`, generated `icon.png`, local `env`, language state, port-local saves and logs, then add the HOME menu entry and required notices. It must run `scripts/audit-release.sh` before creating the ZIP.
+The script should remove `gamedata/`, generated `icon.png`, local `env`, language state, port-local saves and logs, then add an apps.puppy.append fragment for the HOME apps.puppy file and required notices. It must run `scripts/audit-release.sh` before creating the ZIP.
 
 ## Publish
 
@@ -45,7 +45,7 @@ The script should remove `gamedata/`, generated `icon.png`, local `env`, languag
 ## Expected release archive layout
 
 ```text
-.local/share/applications/stardew.puppy
+apps.puppy.append
 ports/stardewvalley/
   stardew.sh
   mono/
