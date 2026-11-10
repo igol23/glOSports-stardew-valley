@@ -13,9 +13,10 @@
 
 1. GitHub'daki [Releases](https://github.com/igol23/glOSports-stardew-valley/releases/latest) sayfasından en güncel ZIP paketini indirin.
 2. ZIP içeriğini SD kartın **HOME** bölümünün köküne çıkarın ve mevcut klasörlerle birleştirin.
-3. Steam'deki Stardew Valley **Compatibility 1.6.15.24356** (32-bit/XNA) sürümüne ait kendi oyun dosyalarınızı `HOME/ports/stardewvalley/gamedata/` klasörüne kopyalayın. `StardewValley.exe` ve `Content/` klasörü bu dizinin içinde bulunmalıdır. Farklı bir oyun sürümünün dosyaları çalışmayabilir.
-4. Kartı güvenli şekilde çıkarıp cihaza takın.
-5. Puppy başlatıcısında Games bölümünden **Stardew Valley** oyununu açın.
+3. Paketteki apps.puppy.append dosyasını metin düzenleyicide açın. İçeriğini mevcut HOME/apps.puppy dosyasının sonuna ekleyin. **Mevcut apps.puppy dosyasını silmeyin veya bununla değiştirmeyin.**
+4. Steam'deki Stardew Valley **Compatibility 1.6.15.24356** (32-bit/XNA) sürümüne ait kendi oyun dosyalarınızı `HOME/ports/stardewvalley/gamedata/` klasörüne kopyalayın. `StardewValley.exe` ve `Content/` klasörü bu dizinin içinde bulunmalıdır. Farklı bir oyun sürümünün dosyaları çalışmayabilir.
+5. Kartı güvenli şekilde çıkarıp cihaza takın ve goodluckOS'u yeniden başlatın. Puppy menü kayıtlarını açılışta okur.
+6. Puppy başlatıcısında Games bölümünden **Stardew Valley** oyununu açın.
 
 ## Önemli
 
