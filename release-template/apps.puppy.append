@@ -1,0 +1,8 @@
+# Append this entry to the end of HOME/apps.puppy.
+# Do not replace the existing apps.puppy file.
+[ENTRY]
+CATEGORY=Games
+NAME=Stardew Valley
+DESCRIPTION=Stardew Valley 1.6.15.24356 Steam Compatibility (32-bit/XNA)
+ICON=/home/player/ports/stardewvalley/icon.png
+COMMAND=sh /home/player/ports/stardewvalley/stardew.sh
