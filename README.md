@@ -90,7 +90,7 @@ A public installable release is not available yet. Once one is published:
 
 1. Download the newest HOME-layout ZIP from [Releases](https://github.com/igol23/glOSports-stardew-valley/releases/latest).
 2. Extract it into the root of the SD card's **HOME** partition, merging the supplied folders.
-3. Open the included apps.puppy.append file. Append its contents to the end of the existing HOME/apps.puppy file. **Do not replace apps.puppy**, because it contains the other menu entries.
+3. The package includes `.local/share/applications/stardew.puppy`, matching the working Half-Life-style Puppy application layout. If a working `stardew.puppy` already exists, keep it and do not overwrite it.
 4. Copy your own game files from the Steam **Compatibility** build (**1.6.15.24356**, 32-bit/XNA) into `HOME/ports/stardewvalley/gamedata/`. The `StardewValley.exe` file and `Content/` directory should be inside that directory. Files from a different game build may not work.
 5. Safely eject the card and return it to the handheld, then restart goodluckOS so Puppy reloads apps.puppy.
 6. Launch **Stardew Valley** from Puppy's Games section.
