@@ -53,7 +53,7 @@ For every runtime binary and helper included in a public ZIP, record its source,
 
 ### 4. Assemble a clean release
 
-Use `scripts/make-release.sh` with the existing working `ports/stardewvalley` directory as input. The script must stage a copy, remove game data, generated `icon.png`, saves, logs, and local overrides, add the apps.puppy.append menu fragment and notices, and run `scripts/audit-release.sh` before creating the ZIP.
+Use `scripts/make-release.sh` with the existing working `ports/stardewvalley` directory as input. The script must stage a copy, remove game data, generated `icon.png`, saves, logs, and local overrides, add the native `.local/share/applications/stardew.puppy` menu entry and notices, and run `scripts/audit-release.sh` before creating the ZIP.
 
 The release must not contain `StardewValley.exe`, the game's `Content/` directory, XNB/XWB assets, game DLLs, save files, or other proprietary game data. Users provide their own legally obtained compatible game files.
 
