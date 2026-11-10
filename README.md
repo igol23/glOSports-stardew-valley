@@ -80,7 +80,7 @@ The GoodLuckOS implementation combines a 32-bit ARMHF Mono runtime, PortMaster's
 - A GA36-family handheld running a compatible goodluckOS release.
 - The tested baseline is goodluckOS 0.1.0 on GA36-MB v1.2.
 - Your own legally obtained Stardew Valley game files.
-- The game's **Compatibility** build. The exact game build used by the maintainer's working installation still needs to be recorded in the release notes before a public binary release.
+- The Steam **Compatibility** build of Stardew Valley **1.6.15.24356** (32-bit/XNA). This port targets that Compatibility build, not an arbitrary/default game installation.
 
 The game itself is not distributed here. This repository and its releases must not contain the Stardew Valley executable, proprietary game libraries, the game's Content directory, XNB/XWB assets, sound banks, save files, or other proprietary game data.
 
@@ -90,7 +90,7 @@ A public installable release is not available yet. Once one is published:
 
 1. Download the newest HOME-layout ZIP from [Releases](https://github.com/igol23/glOSports-stardew-valley/releases/latest).
 2. Extract it into the root of the SD card's **HOME** partition, merging the supplied folders.
-3. Copy your own compatible game files into `HOME/ports/stardewvalley/gamedata/`. The `StardewValley.exe` file and `Content/` directory should be inside that directory.
+3. Copy your own game files from the Steam **Compatibility** build (**1.6.15.24356**, 32-bit/XNA) into `HOME/ports/stardewvalley/gamedata/`. The `StardewValley.exe` file and `Content/` directory should be inside that directory. Files from a different game build may not work.
 4. Safely eject the card and return it to the handheld.
 5. Launch **Stardew Valley** from Puppy's Games section.
 
