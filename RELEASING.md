@@ -33,7 +33,7 @@ bash scripts/make-release.sh \
   "dist/stardewvalley-goodluckOS.zip"
 ```
 
-The script should remove `gamedata/`, generated `icon.png`, local `env`, language state, port-local saves and logs, then add an apps.puppy.append fragment for the HOME apps.puppy file and required notices. It must run `scripts/audit-release.sh` before creating the ZIP.
+The script should remove `gamedata/`, generated `icon.png`, local `env`, language state, port-local saves and logs, then add the native `.local/share/applications/stardew.puppy` menu entry and required notices. It must run `scripts/audit-release.sh` before creating the ZIP.
 
 ## Publish
 
@@ -45,7 +45,7 @@ The script should remove `gamedata/`, generated `icon.png`, local `env`, languag
 ## Expected release archive layout
 
 ```text
-apps.puppy.append
+.local/share/applications/stardew.puppy
 ports/stardewvalley/
   stardew.sh
   mono/
