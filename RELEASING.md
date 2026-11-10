@@ -19,7 +19,7 @@ A release is published only after every blocking item below is resolved. The cur
 - [ ] Build the distributable port folder from the pinned sources, or explicitly document that the tested release was assembled from the existing working runtime.
 - [ ] Run the release audit script against the staged HOME tree.
 - [ ] Install to a clean HOME copy or spare card, without overwriting the maintainer's working installation.
-- [ ] Confirm the package contains apps.puppy.append; append it to the existing HOME/apps.puppy during clean-install testing, then confirm the entry launches the game after the user supplies their own files.
+- [ ] Confirm the package contains `.local/share/applications/stardew.puppy`, matching the working Half-Life-style Puppy application layout; confirm it launches after the user supplies their own files.
 - [ ] Confirm audio, controls, language handling, saving, and loading.
 - [ ] Record the device model, firmware version, Stardew Valley **1.6.15.24356 (Steam Compatibility, 32-bit/XNA)** build, date, and tested functions in the release notes.
 
