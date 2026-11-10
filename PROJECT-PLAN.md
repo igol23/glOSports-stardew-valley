@@ -33,7 +33,7 @@ The existing working installation is the reference build. Repository preparation
 - `scripts/` — source import, OpenAL notice retrieval, release packaging, and release audit scripts.
 - `dev/stardew/` — imported build and patch sources; never store proprietary game assets here.
 - `dev/UPSTREAM-REVISION.txt` — exact imported GoodLuckOS and PortMaster revisions.
-- `release-template/` — native apps.puppy.append menu fragment and an instruction-only placeholder for user-provided game files.
+- `release-template/.local/share/applications/stardew.puppy` — native Puppy menu entry matching the working Half-Life-style layout, plus an instruction-only placeholder for user-provided game files.
 - `docs/images/` — maintainer-captured screenshots for documentation; never copy them into the install ZIP without separate review.
 - `dist/` — generated release ZIP and checksum; never commit this directory.
 
