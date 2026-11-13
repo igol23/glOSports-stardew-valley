@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **The completed and cleanest version of this goodluckOS Stardew Valley port is maintained here:** [alvesmaicon/glOSports-stardew](https://github.com/alvesmaicon/glOSports-stardew). Please use that repository as the primary source for the finished port, its latest releases, installation instructions, and updates. This repository is retained as an earlier reference/documentation effort.
+
 # Stardew Valley on GA36 — goodluckOS
 
 <p align="center">
